@@ -45,7 +45,6 @@ def draw(best, alfa):
 clock = pygame.time.Clock()
 
 running = True
-run = False
 while running:
 
     clock.tick(60)
@@ -54,13 +53,9 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    keys = pygame.key.get_pressed()
-    if keys[pygame.K_SPACE]:
-        run = True
-    if run:
-        if not population.isFinished:
-            best = generateSentence()
-        else:
-            if alfa < 255:
-                alfa += 1
-        draw(best, alfa)
+    if not population.isFinished:
+        best = generateSentence()
+    else:
+        if alfa < 255:
+            alfa += 1
+    draw(best, alfa)
